@@ -5,72 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire Esthétique</title>
     <style>
+        /* Style global */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
         }
+        
+        /* Conteneur du formulaire */
         .form-container {
-            background-color: #ffffff;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #1c1c1c;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
             width: 100%;
             max-width: 400px;
         }
+        
+        /* Titre du formulaire */
         .form-container h1 {
             text-align: center;
-            font-size: 24px;
-            color: #333333;
+            font-size: 26px;
             margin-bottom: 20px;
+            color: #fff;
         }
+        
+        /* Groupes de champs */
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            position: relative;
         }
+        
+        /* Labels */
         .form-group label {
-            display: block;
             font-size: 14px;
-            color: #555555;
             margin-bottom: 5px;
+            color: #bbb;
+            display: block;
         }
+        
+        /* Champs texte et textarea */
         .form-group input, 
         .form-group textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px 15px;
             font-size: 14px;
-            border: 1px solid #cccccc;
-            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 8px;
             outline: none;
+            transition: border-color 0.3s;
         }
+        
         .form-group input:focus, 
         .form-group textarea:focus {
-            border-color: #007bff;
+            border-color: #fff;
         }
+        
         .form-group textarea {
             resize: none;
             height: 100px;
         }
+        
+        /* Icônes des champs */
+        .form-group i {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        
+        /* Déplacement des champs pour l'icône */
+        .form-group input,
+        .form-group textarea {
+            padding-left: 35px;
+        }
+        
+        /* Bouton */
         .form-button {
             text-align: center;
         }
+        
         .form-button button {
-            background-color: #007bff;
-            color: #ffffff;
+            background-color: #fff;
+            color: #000;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             font-size: 16px;
-            border-radius: 5px;
+            font-weight: bold;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
+        
         .form-button button:hover {
-            background-color: #0056b3;
+            background-color: #555;
+            color: #fff;
         }
     </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="form-container">
@@ -78,21 +118,23 @@
         <form action="#" method="post">
             <div class="form-group">
                 <label for="nom">Nom :</label>
+                <i class="fas fa-user"></i>
                 <input type="text" id="nom" name="nom" placeholder="Votre nom">
             </div>
             <div class="form-group">
                 <label for="prenom">Prénom :</label>
+                <i class="fas fa-user-tag"></i>
                 <input type="text" id="prenom" name="prenom" placeholder="Votre prénom">
             </div>
             <div class="form-group">
                 <label for="message">Message :</label>
+                <i class="fas fa-envelope"></i>
                 <textarea id="message" name="message" placeholder="Votre message"></textarea>
             </div>
             <div class="form-button">
-                <button type="submit">Envoyer</button>
+                <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
             </div>
         </form>
     </div>
 </body>
 </html>
-
