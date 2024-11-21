@@ -34,6 +34,40 @@ def mongraphique():
 @app.route("/histogramme/")
 def colonnes():
     return render_template("colonnes.html")
+
+
+# URL de l'API GitHub
+GITHUB_API_URL = "https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits"
+
+@app.route('/')
+def home():
+    return "<h1>Bienvenue ! Visitez <a href='/commits'>/commits</a> pour voir les graphiques des commits.</h1>"
+
+@app.route('/commits')
+def commits():
+    try:
+        # Récupérer les commits depuis l'API GitHub
+        response = requests.get(GITHUB_API_URL)
+        commits_data = response.json()
+
+        # Extraire les minutes des commits
+        commit_minutes = []
+        for commit in commits_data:
+            commit_date = commit["commit"]["author"]["date"]
+            date_object = datetime.strptime(commit_date, '%Y-%m-%dT%H:%M:%SZ')
+            commit_minutes.append(date_object.minute)
+
+        # Compter les occurrences de chaque minute
+        minute_counts = Counter(commit_minutes)
+
+        # Transformer les données pour le graphique
+        labels = sorted(minute_counts.keys())
+        values = [minute_counts[minute] for minute in labels]
+
+        return render_template('commits.html', labels=labels, values=values)
+
+    except Exception as e:
+        return jsonify({"error": str(e)})
   
 if __name__ == "__main__":
   app.run(debug=True)
