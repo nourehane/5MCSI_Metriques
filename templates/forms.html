@@ -15,8 +15,10 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Évite les débordements */
         }
-        
+
         /* Conteneur du formulaire */
         .form-container {
             background-color: #1c1c1c;
@@ -25,8 +27,9 @@
             box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
             width: 100%;
             max-width: 400px;
+            box-sizing: border-box; /* S'assure que les paddings sont bien gérés */
         }
-        
+
         /* Titre du formulaire */
         .form-container h1 {
             text-align: center;
@@ -34,13 +37,13 @@
             margin-bottom: 20px;
             color: #fff;
         }
-        
+
         /* Groupes de champs */
         .form-group {
             margin-bottom: 20px;
             position: relative;
         }
-        
+
         /* Labels */
         .form-group label {
             font-size: 14px;
@@ -48,7 +51,7 @@
             color: #bbb;
             display: block;
         }
-        
+
         /* Champs texte et textarea */
         .form-group input, 
         .form-group textarea {
@@ -61,38 +64,39 @@
             border-radius: 8px;
             outline: none;
             transition: border-color 0.3s;
+            box-sizing: border-box;
         }
-        
+
         .form-group input:focus, 
         .form-group textarea:focus {
             border-color: #fff;
         }
-        
+
         .form-group textarea {
             resize: none;
             height: 100px;
         }
-        
+
         /* Icônes des champs */
         .form-group i {
             position: absolute;
             top: 50%;
-            left: 10px;
+            left: 12px;
             transform: translateY(-50%);
             color: #999;
         }
-        
+
         /* Déplacement des champs pour l'icône */
         .form-group input,
         .form-group textarea {
-            padding-left: 35px;
+            padding-left: 40px; /* Assez pour laisser de l'espace à l'icône */
         }
-        
+
         /* Bouton */
         .form-button {
             text-align: center;
         }
-        
+
         .form-button button {
             background-color: #fff;
             color: #000;
@@ -103,8 +107,9 @@
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
+            box-sizing: border-box;
         }
-        
+
         .form-button button:hover {
             background-color: #555;
             color: #fff;
