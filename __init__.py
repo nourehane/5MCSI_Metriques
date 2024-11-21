@@ -36,7 +36,7 @@ def colonnes():
     return render_template("colonnes.html")
 
 
-# URL de l'API GitHub
+# début du test pour l'exercice 6
 GITHUB_API_URL = "https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits"
 
 @app.route('/')
@@ -68,6 +68,7 @@ def commits():
 
     except Exception as e:
         return jsonify({"error": str(e)})
+# fin du test pour l'exercice 6
   
 if __name__ == "__main__":
   app.run(debug=True)
