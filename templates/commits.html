@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphique des Commits</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        canvas {
+            max-width: 800px;
+            max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Graphique des Commits (minute par minute)</h1>
+    <canvas id="commitChart"></canvas>
+
+    <script>
+        // Récupérer les données depuis Flask (injectées dans le template)
+        const labels = {{ labels | safe }};
+        const values = {{ values | safe }};
+
+        // Configurer le graphique
+        const ctx = document.getElementById('commitChart').getContext('2d');
+        const commitChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Nombre de commits',
+                    data: values,
+                    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                    borderColor: 'rgba(255, 255, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            color: '#fff'
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#fff'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.2)'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#fff'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.2)'
+                        },
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
